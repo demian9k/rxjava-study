@@ -1,0 +1,58 @@
+plugins {
+    // Apply the java plugin to add support for Java
+    id 'java'
+
+    // Apply the application plugin to add support for building a CLI application.
+    id 'application'
+}
+
+repositories {
+    // Use jcenter for resolving dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    mavenCentral()
+}
+
+dependencies {
+    // This dependency is used by the application.
+    implementation 'com.google.guava:guava:28.0-jre'
+    implementation  group: 'io.reactivex.rxjava2', name: 'rxjava', version: '2.2.8'
+    // Use JUnit test framework
+    testImplementation 'junit:junit:4.12'
+
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.9.0'
+    implementation  'org.slf4j:slf4j-api:1.7.21'
+    implementation  'com.squareup.retrofit2:retrofit:2.0.2'
+    implementation  'com.squareup.retrofit2:converter-gson:2.0.2'
+    implementation  'com.squareup.okhttp3:okhttp:4.9.3'
+    implementation  'org.apache.commons:commons-lang3:3.1'
+    implementation  "com.github.akarnokd:rxjava2-extensions:0.17.5"
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.0.0-RC2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.0.0-RC2'
+    testImplementation 'org.junit.platform:junit-platform-runner:1.0.0-RC2'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+    }
+
+    test {
+        java {
+            srcDir 'src/test/java'
+        }
+    }
+}
+
+application {
+    // Define the main class for the application.
+    mainClassName = 'io.demian.rxjava.App'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'io.demian.rxjava.App'
+    }
+}
